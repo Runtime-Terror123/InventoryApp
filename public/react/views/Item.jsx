@@ -1,4 +1,4 @@
-function SigleView({ items }) {
+function Item({ items }) {
   return (
     <div className="single-view">
       {items.map((item) => (
@@ -14,4 +14,4 @@ function SigleView({ items }) {
   );
 }
 
-export default SigleView;
+export default Item;
