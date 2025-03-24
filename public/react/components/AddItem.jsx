@@ -1,5 +1,5 @@
 export default function AddItem() {
-    return <form>
+    return <>
         <h1>Add Item</h1>
         <form>
             <fieldset>
@@ -19,5 +19,5 @@ export default function AddItem() {
                 <input name={"image"}/>
             </fieldset>
         </form>
-    </form>
+    </>
 }
