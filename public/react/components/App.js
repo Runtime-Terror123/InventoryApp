@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 // Prepend the API URL to any fetch calls.
 import apiURL from "../api";
+import AddItem from "./AddItem";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -13,7 +14,7 @@ function App() {
   return (
     <>
       <h1>Inventory App</h1>
-      {/* Render the items */}
+      <AddItem/>
     </>
   );
 }
