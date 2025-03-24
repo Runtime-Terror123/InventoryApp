@@ -1,0 +1,88 @@
+import {useState} from "react";
+import apiURL from "../api";
+import Header from "../components/Header.jsx";
+import {useNavigate} from "react-router-dom";
+
+export default function AddItem() {
+    const defaultFormState = {
+        name: '',
+        description: '',
+        category: '',
+        image: '',
+        price: 0
+    }
+    const [formState, setFormState] = useState(defaultFormState)
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
+
+    async function handleSubmit(event) {
+        event.preventDefault()
+        console.debug(formState)
+        try {
+            const response = await fetch(`${apiURL}/items`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formState)
+            })
+            const data = await response.json()
+            console.debug(JSON.stringify(data))
+            if (response.ok) {
+                alert("Added Item")
+                setFormState(defaultFormState)
+                navigate("/")
+            } else {
+                setError(data)
+            }
+
+        } catch(e) {
+            console.error(e)
+            setError({
+                message: 'There was a problem with the server.'
+            })
+        }
+    }
+
+    function onChange(event) {
+        setFormState({ ...formState, [event.target.name]: event.target.value })
+    }
+    return <>
+        <Header />
+        <h1>Add Item</h1>
+        {error && <div style={{
+            backgroundColor: 'red',
+            color: 'white',
+            marginBottom: '1vh',
+            padding: '4px'
+        }}>{error.message}</div>}
+
+        <form onSubmit={handleSubmit}>
+            <fieldset>
+                <label htmlFor="name">Name</label>
+                <input name={"name"} value={formState.name} onChange={onChange} />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="description">Description</label>
+                <input name={"description"} value={formState.description} onChange={onChange} />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="category">Category</label>
+                <input name={"category"} value={formState.category} onChange={onChange} />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="image">Image</label>
+                <input name={"image"} value={formState.image} onChange={onChange} />
+            </fieldset>
+            <fieldset>
+                <label htmlFor="price">Image</label>
+                <input name={"price"} value={formState.price} onChange={onChange} type={"number"}/>
+            </fieldset>
+            <fieldset>
+                <button type={"submit"} style={{
+                    backgroundColor: 'lightgreen',
+                }}>Add</button>
+            </fieldset>
+        </form>
+    </>
+}

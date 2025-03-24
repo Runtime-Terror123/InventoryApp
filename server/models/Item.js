@@ -34,6 +34,7 @@ Item.init(
   },
   {
     sequelize,
+      modelName: "Item",
   }
 );
 
