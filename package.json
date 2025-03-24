@@ -39,8 +39,5 @@
     "react-test-renderer": "^19.0.0",
     "sequelize": "^6.37.6",
     "sqlite3": "^5.1.7"
-  },
-  "devDependencies": {
-    "@babel/preset-react": "^7.26.3"
   }
 }
