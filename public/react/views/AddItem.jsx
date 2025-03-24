@@ -1,6 +1,7 @@
 import {useState} from "react";
 import apiURL from "../api";
 import Header from "../components/Header.jsx";
+import {useNavigate} from "react-router-dom";
 
 export default function AddItem() {
     const defaultFormState = {
@@ -12,6 +13,7 @@ export default function AddItem() {
     }
     const [formState, setFormState] = useState(defaultFormState)
     const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     async function handleSubmit(event) {
         event.preventDefault()
@@ -29,6 +31,7 @@ export default function AddItem() {
             if (response.ok) {
                 alert("Added Item")
                 setFormState(defaultFormState)
+                navigate("/")
             } else {
                 setError(data)
             }
