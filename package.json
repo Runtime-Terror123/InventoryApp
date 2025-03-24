@@ -1,6 +1,7 @@
 {
   "name": "inventoryapp",
-  "version": "2.0.1",
+  "version": "1.0.0",
+  "description": "![logo](https://user-images.githubusercontent.com/44912347/202296600-c5f247d6-9616-49db-88f0-38433429d781.jpg)",
   "scripts": {
     "test": "jest",
     "client-dev": "parcel public/index.html --open",
@@ -8,25 +9,34 @@
     "seed": "node server/seed.js",
     "start": "parcel build public/index.html && npm run seed && node server.js"
   },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "16.0.0",
-    "express": "^4.17.1",
-    "morgan": "1.10.0",
-    "process": "^0.11.10",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sequelize": "^6.23.2",
-    "sqlite3": "^5.1.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Runtime-Terror123/InventoryApp.git"
   },
-  "devDependencies": {
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-react": "^7.14.5",
-    "@testing-library/react": "^12.0.0",
-    "babel-jest": "^27.1.0",
-    "jest": "^27.1.0",
-    "nodemon": "^3.1.7",
-    "parcel": "^2.8.3",
-    "react-test-renderer": "^18.2.0"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Runtime-Terror123/InventoryApp/issues"
+  },
+  "homepage": "https://github.com/Runtime-Terror123/InventoryApp#readme",
+  "dependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@testing-library/react": "^16.2.0",
+    "babel-jest": "^29.7.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jest": "^29.7.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "parcel": "^2.14.2",
+    "process": "^0.11.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-test-renderer": "^19.0.0",
+    "sequelize": "^6.37.6",
+    "sqlite3": "^5.1.7"
   }
 }
