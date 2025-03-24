@@ -1,9 +1,10 @@
 import React from "react";
+import Header from "../components/Header.jsx";
 
 const Home = () => {
   return (
     <div>
-      <h1>Inventory App</h1>
+        <Header/>
     </div>
   );
 };
