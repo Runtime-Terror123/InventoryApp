@@ -28,3 +28,7 @@ button:hover {
 label {
   display: block;
 }
+
+fieldset {
+  border: none;
+}
