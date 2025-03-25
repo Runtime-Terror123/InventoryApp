@@ -1,12 +1,13 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 const Items = () => {
-  const [items, setItems]= useState();
+  const [items, setItems]= useState([]);
 
   useEffect(() => {
-    fetch ("https:/http://localhost:3000/api/items")
+    fetch ("http://localhost:3000/api/items")
     .then(response => response.json())
     .then(data => setItems(data))
     .catch(error => console.log('Error fetching items', error));
@@ -20,6 +21,9 @@ const Items = () => {
         <p>{item.description}</p>
         <span>Price: ${item.price}</span>
         <span>Category: {item.category}</span>
+        <NavLink to={`/items/${item.id}`}>
+        <h2>All Items</h2>
+      </NavLink>
       </div>
     ))}
   </div>
