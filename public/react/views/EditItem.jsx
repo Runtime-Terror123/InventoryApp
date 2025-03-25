@@ -1,26 +1,20 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import apiURL from "../api";
-import { useNavigate } from "react-router-dom";
+import {useParams} from "react-router-dom";
 
-export default function AddItem() {
-  const defaultFormState = {
-    name: "",
-    description: "",
-    category: "",
-    image: "",
-    price: 1,
-  };
-  const [formState, setFormState] = useState(defaultFormState);
+export default function EditItem() {
+  const { id } = useParams();
+  const [formState, setFormState] = useState(null);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const [message, setMessage] = useState(null);
 
   async function handleSubmit(event) {
     event.preventDefault();
     console.debug(formState);
 
     try {
-      const response = await fetch(`${apiURL}/items`, {
-        method: "POST",
+      const response = await fetch(`${apiURL}/items/${id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -31,8 +25,7 @@ export default function AddItem() {
       console.debug(JSON.stringify(data));
 
       if (response.ok) {
-        setFormState(defaultFormState);
-        navigate("/");
+          setMessage("Item updated!");
       } else {
         setError(data);
       }
@@ -59,11 +52,24 @@ export default function AddItem() {
     }
   }
 
+  async function getItem() {
+    const response = await fetch(`${apiURL}/items/${id}`)
+    const data = await response.json();
+    setFormState(data)
+  }
+
+  useEffect(() => {
+    getItem()
+  }, [])
+
+  if (formState === null) {
+    return "Loading...";
+  }
+
   return (
     <>
-      <h1>Add Item</h1>
-      {error && (
-        <div
+      <h1>Edit Item</h1>
+      {error && <div
           style={{
             backgroundColor: "red",
             color: "white",
@@ -72,8 +78,16 @@ export default function AddItem() {
           }}
         >
           {error.message}
-        </div>
-      )}
+        </div>}
+      {message && <div
+        style={{
+          backgroundColor: "lightgreen",
+          color: "white",
+          marginBottom: "1vh",
+          padding: "4px",
+        }}>
+        {message}
+      </div>}
 
       <form onSubmit={handleSubmit}>
         <fieldset>
@@ -98,6 +112,7 @@ export default function AddItem() {
         </fieldset>
         <fieldset>
           <label htmlFor="image">Image</label>
+          {formState.image && <div><img src={formState.image} alt={"Current image"} height={"300px"}/></div>}
           <input type={"file"} name={"image"} onChange={onChange} accept=".png,.jpg"/>
         </fieldset>
         <fieldset>
