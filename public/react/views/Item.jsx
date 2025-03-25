@@ -9,18 +9,13 @@ function Item() {
     try {
       const response = await fetch(`${apiURL}/items/${id}`);
       const data = await response.json();
-      console.log(data)
-      console.log(data.id)
-      console.log(data.name)
       setItem(data);
     } catch (err) {
       console.log("Oh no an error! ", err);
     }
   }
 
-
   useEffect(() => {
-    // Fetch the item
     fetchItem();
   }, []);
 
