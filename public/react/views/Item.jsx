@@ -46,8 +46,9 @@ function Item() {
         <p>Description: {item.description}</p>
         <p>Price: {item.price?.toFixed(2)}</p>
         <p>Category: {item.category}</p>
-        {item.image && <img src={item.image} />}
+        {item.image && <img src={item.image} alt={`${item.description} image`} />}
         <button onClick={deleteItem}>Delete Item</button>
+        <button onClick={() => navigate(`/edit/${id}`)}>Edit Item</button>
       </div>
     </div>
   );

@@ -133,7 +133,7 @@ export default function EditItem() {
               backgroundColor: "lightgreen",
             }}
           >
-            Add
+            Edit
           </button>
         </fieldset>
       </form>
