@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import apiURL from "../api"
 function Item() {
   const { id } = useParams();
   const [item, setItem] = useState({});
-  const apiURL = "http://localhost:3000/api";
 
   async function fetchItem() {
     try {
