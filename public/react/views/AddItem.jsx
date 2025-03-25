@@ -9,7 +9,7 @@ export default function AddItem() {
     description: "",
     category: "",
     image: "",
-    price: 0,
+    price: 1,
   };
   const [formState, setFormState] = useState(defaultFormState);
   const [error, setError] = useState(null);
@@ -18,6 +18,7 @@ export default function AddItem() {
   async function handleSubmit(event) {
     event.preventDefault();
     console.debug(formState);
+
     try {
       const response = await fetch(`${apiURL}/items`, {
         method: "POST",
@@ -26,8 +27,10 @@ export default function AddItem() {
         },
         body: JSON.stringify(formState),
       });
+
       const data = await response.json();
       console.debug(JSON.stringify(data));
+
       if (response.ok) {
         alert("Added Item");
         setFormState(defaultFormState);
@@ -49,6 +52,21 @@ export default function AddItem() {
   return (
     <>
       <Header />
+    // For the image, we have to use FileReader, set the onloadend callback function and call readAsDataURL
+    if (event.target.name === "image") {
+      let reader = new FileReader();
+      reader.onloadend = (event) => {
+        const content = event.target.result;
+        setFormState({...formState, image: content});
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    } else {
+      setFormState({...formState, [event.target.name]: event.target.value});
+    }
+  }
+
+  return (
+    <>
       <h1>Add Item</h1>
       {error && (
         <div
@@ -86,15 +104,17 @@ export default function AddItem() {
         </fieldset>
         <fieldset>
           <label htmlFor="image">Image</label>
-          <input name={"image"} value={formState.image} onChange={onChange} />
+          <input type={"file"} name={"image"} onChange={onChange} accept=".png,.jpg"/>
         </fieldset>
         <fieldset>
-          <label htmlFor="price">Image</label>
+          <label htmlFor="price">Price</label>
           <input
             name={"price"}
             value={formState.price}
             onChange={onChange}
             type={"number"}
+            min="0"
+            max="99999"
           />
         </fieldset>
         <fieldset>

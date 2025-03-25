@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/Home.jsx";
 import Item from "./views/Item.jsx";
@@ -9,14 +9,9 @@ import apiURL from "./api.js";
 import AddItem from "./views/AddItem.jsx";
 
 function App() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    // Fetch the items
-  }, []);
-
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add" element={<AddItem />} />
