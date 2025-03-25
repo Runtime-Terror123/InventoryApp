@@ -1,5 +1,6 @@
 import { useState } from "react";
 import apiURL from "../api";
+import Header from "../components/Header.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function AddItem() {
@@ -37,7 +38,6 @@ export default function AddItem() {
       } else {
         setError(data);
       }
-
     } catch (e) {
       console.error(e);
       setError({
@@ -47,6 +47,11 @@ export default function AddItem() {
   }
 
   function onChange(event) {
+    setFormState({ ...formState, [event.target.name]: event.target.value });
+  }
+  return (
+    <>
+      <Header />
     // For the image, we have to use FileReader, set the onloadend callback function and call readAsDataURL
     if (event.target.name === "image") {
       let reader = new FileReader();
@@ -62,7 +67,6 @@ export default function AddItem() {
 
   return (
     <>
-      <Header />
       <h1>Add Item</h1>
       {error && (
         <div
