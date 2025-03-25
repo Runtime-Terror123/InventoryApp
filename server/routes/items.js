@@ -1,5 +1,6 @@
 const express = require("express");
 const { Item } = require("../models");
+const { findAll } = require("../models/Item");
 
 const router = express.Router();
 router.use(express.json());
@@ -28,4 +29,13 @@ router.post("/", async (req, res) => {
   }
 })
 
+router.get("/", async (req,res) => {
+  try {
+    const items = await Item.findAll();
+    res.status(200).json(items);
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: error.message });
+  }
+})
 module.exports = router;
