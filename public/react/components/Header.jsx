@@ -18,6 +18,9 @@ export default function Header() {
         <NavLink to="/add" end>
           <h2>Add</h2>
         </NavLink>
+        <NavLink to="/items" end>
+          <h2>Items</h2>
+        </NavLink>
       </nav>
     </header>
   );
