@@ -1,6 +1,5 @@
 const express = require("express");
 const { Item } = require("../models");
-const { findAll } = require("../models/Item");
 
 const router = express.Router();
 router.use(express.json());
