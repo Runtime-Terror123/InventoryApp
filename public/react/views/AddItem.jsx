@@ -62,6 +62,7 @@ export default function AddItem() {
 
   return (
     <>
+      <Header />
       <h1>Add Item</h1>
       {error && (
         <div
