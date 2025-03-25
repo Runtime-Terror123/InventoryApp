@@ -10,7 +10,7 @@ function Item() {
     try {
       const response = await fetch(`${apiURL}/items/${id}`);
       const data = await response.json();
-      if(!response.ok) {
+      if (!response.ok) {
         return;
       }
       setItem(data);
@@ -36,8 +36,8 @@ function Item() {
     }
   }
   console.log(item);
-  if(item === null) {
-    return <div>No Item</div>
+  if (item === null) {
+    return <div>No Item</div>;
   }
   return (
     <div className="single-view">
