@@ -23,10 +23,10 @@ function Item() {
     <div className="single-view">
       <div key={item.id} className="item">
         <h2>{item.name}</h2>
-        <p>{item.description}</p>
-        <p>{item.price}</p>
-        <p>{item.category}</p>
-        <img src={item.image} alt="Blue Backpack" />
+        <p>Description: {item.description}</p>
+        <p>Price: {item.price?.toFixed(2)}</p>
+        <p>Category: {item.category}</p>
+        <img src={item.image} />
       </div>
     </div>
   );
