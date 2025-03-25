@@ -4,8 +4,9 @@ import Home from "./views/Home.jsx";
 import Item from "./views/Item.jsx";
 import Items from "./views/Items.jsx";
 
+// Prepend the API URL to any fetch calls.
+import apiURL from "./api.js";
 import AddItem from "./views/AddItem.jsx";
-import Header from "./components/Header";
 
 function App() {
   return (
