@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 
 // parsing middleware for form input data & json
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // serve up static files (e.g. html and css files)
 app.use(express.static(path.join(__dirname, "../dist")));
