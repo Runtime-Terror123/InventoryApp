@@ -25,6 +25,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.8",
+    "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.0",
     "@testing-library/react": "^16.2.0",
     "babel-jest": "^29.7.0",

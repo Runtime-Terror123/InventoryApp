@@ -33,3 +33,7 @@ label {
 fieldset {
   border: none;
 }
+
+nav a {
+  width: 5vw;
+}
