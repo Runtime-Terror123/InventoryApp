@@ -1,0 +1,9 @@
+services:
+  app:
+    # ??? build the docker file I guess
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # expose port 3000 to the host
+    ports:
+      - "3000:3000"
