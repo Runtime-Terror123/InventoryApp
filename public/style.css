@@ -60,3 +60,19 @@ h4 {
   margin-left: 50px;
   font-family: "Courier New", Courier, monospace;
 }
+
+
+@media (max-width: 600px) {
+  body {
+    width: 100%;
+    margin: 0.5em auto;
+    padding: 1em;
+  }
+
+  button, img, input[type="text"], fieldset, input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    box-sizing: border-box;
+  }
+}

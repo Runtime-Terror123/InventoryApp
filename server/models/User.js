@@ -1,35 +1,27 @@
 const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../db");
 
-class Item extends Model {}
+class User extends Model {}
 
-Item.init(
+User.init(
   {
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    price: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    category: {
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: true,
     },
   },
   {
     sequelize,
-    modelName: "Item",
+    modelName: "User",
   }
 );
 
-module.exports = Item;
+module.exports = User;
