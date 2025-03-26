@@ -10,7 +10,7 @@ import React, {useEffect, useState} from 'react'
 import {Outlines, useGLTF} from '@react-three/drei'
 import {useNavigate} from "react-router-dom";
 export default function Model(props) {
-    const { nodes, materials } = useGLTF(`http://localhost:3000/low_poly_treasure_chest/scene.gltf`)
+    const { nodes, materials } = useGLTF(`http://localhost:3000/low_poly_treasure_chest/scene-transformed.glb`)
     const navigate = useNavigate();
 
     const [hovered, setHovered] = useState(false)
@@ -39,4 +39,4 @@ export default function Model(props) {
     )
 }
 
-useGLTF.preload('/scene.gltf')
+useGLTF.preload('/scene-transformed.glb')

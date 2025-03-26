@@ -20,7 +20,6 @@ button {
   border: 1px solid black;
   padding: 5px 10px;
   color: black;
-  display: block;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -56,7 +55,7 @@ h4 {
   color: black;
   text-align: end;
   font-style: italic;
-  border-radius: 0%;
+  border-radius: 0;
   margin-left: 50px;
   font-family: "Courier New", Courier, monospace;
 }
@@ -77,3 +76,6 @@ h4 {
   }
 }
 
+nav a {
+  width: 5vw;
+}
