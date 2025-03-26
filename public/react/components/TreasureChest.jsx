@@ -9,8 +9,11 @@ Title: Low poly treasure chest
 import React, {useEffect, useState} from 'react'
 import {Outlines, useGLTF} from '@react-three/drei'
 import {useNavigate} from "react-router-dom";
+
+const model_url = "https://dustin-alandzes-personal.s3.us-east-1.amazonaws.com/multiverse/chest.glb"
+
 export default function Model(props) {
-    const { nodes, materials } = useGLTF(`http://localhost:3000/low_poly_treasure_chest/scene-transformed.glb`)
+    const { nodes, materials } = useGLTF(model_url)
     const navigate = useNavigate();
 
     const [hovered, setHovered] = useState(false)
@@ -39,4 +42,4 @@ export default function Model(props) {
     )
 }
 
-useGLTF.preload('/scene-transformed.glb')
+useGLTF.preload(model_url)
