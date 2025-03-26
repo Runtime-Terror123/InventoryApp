@@ -19,11 +19,11 @@ button {
   border-radius: 4px;
   border: 1px solid black;
   padding: 5px 10px;
-  color:black;
+  color: black;
   display: block;
   width: 100%;
-  display:flex;
- justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 button:hover {
@@ -39,23 +39,24 @@ fieldset {
   border: none;
 }
 
- header{
+header {
   width: 100%;
-  display:flex;
- justify-content:space-around;
- color: lightseagreen;
- margin-bottom: 20px;
- font-size: large;
- margin-left: 10%;
- font-family:'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: space-around;
+  color: lightseagreen;
+  margin-bottom: 20px;
+  font-size: large;
+  margin-left: 10%;
+  font-family: "Courier New", Courier, monospace;
 }
 
-h2, h3, h4{
-  color:black;
+h2,
+h3,
+h4 {
+  color: black;
   text-align: end;
   font-style: italic;
   border-radius: 0%;
   margin-left: 50px;
-  font-family:'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
-
