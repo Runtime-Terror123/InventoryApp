@@ -1,12 +1,11 @@
 import React from "react";
-import Search from "../components/Search";
-// import Search from "../components/Search";
+import { Box } from "@mui/material";
 
 const Home = () => {
   return (
-    <div>
+    <Box>
         <Search/>
-    </div>
+    </Box>
   );
 };
 
