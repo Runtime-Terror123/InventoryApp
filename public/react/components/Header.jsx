@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import React from "react";
+import {Canvas} from "@react-three/fiber";
 
 export default function Header() {
   return (
@@ -10,7 +11,17 @@ export default function Header() {
         justifyContent: "space-between",
       }}
     >
-      <h1>Inventory App</h1>
+      <div>
+        <div id="canvas-container">
+          <Canvas>
+            <mesh>
+              <boxGeometry />
+              <meshStandardMaterial />
+            </mesh>
+          </Canvas>
+          <h1>Inventory App</h1>
+        </div>
+      </div>
       <nav>
         <NavLink to="/" end>
           <h2>Home</h2>
