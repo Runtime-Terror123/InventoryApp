@@ -1,8 +1,14 @@
-import { NavLink } from "react-router-dom";
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { IconButton } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {Canvas} from "@react-three/fiber";
 import Logo from "./Logo";
-export default function Header() {
+
+export default function Header({ setIsCartShown }) {
+  const toggleCart = () => {
+    setIsCartShown((prev) => !prev);
+  };
   return (
     <header
       id={"header"}
@@ -14,6 +20,8 @@ export default function Header() {
         marginBottom: "1vh"
       }}
     >
+      <h1>Inventory App</h1>
+      <nav style={{ display: "flex", gap: 10, alignItems: "center" }}>
       <div style={{
         display: "flex",
         alignItems: "center",
@@ -39,6 +47,9 @@ export default function Header() {
         <NavLink to="/items" end>
           <h2>Items</h2>
         </NavLink>
+        <IconButton onClick={toggleCart}>
+          <ShoppingCartIcon />
+        </IconButton>
       </nav>
     </header>
   );
