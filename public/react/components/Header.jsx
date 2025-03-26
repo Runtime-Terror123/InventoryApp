@@ -18,7 +18,7 @@ export default function Header() {
         display: "flex",
         alignItems: "center",
       }}>
-          <div id="canvas-container" style={{ display: "inline-block", height: "10vh" }} >
+          <div id="canvas-container" style={{ display: "inline-block", height: "10vh", width: '7vw' }} >
             <Canvas>
               <Logo/>
             </Canvas>
