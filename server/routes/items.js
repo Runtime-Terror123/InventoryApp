@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Item } = require("../models/index");
+const { Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   try {
@@ -68,6 +69,22 @@ router.delete("/:id", async (req, res) => {
 router.get("/", async (req,res) => {
   try {
     const items = await Item.findAll();
+    res.status(200).json(items);
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: error.message });
+  }
+})
+
+router.post("/search", async (req,res) => {
+  try {
+    const items = await Item.findAll({
+      where: {
+        name: {
+          [Op.like]: `%${req.body.query}%`
+        },
+      }
+    });
     res.status(200).json(items);
   } catch (error) {
     console.error(error)
