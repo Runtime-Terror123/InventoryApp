@@ -32,5 +32,4 @@ const Items = () => {
 );
 };
 
-
-export default Items
+export default Items;
