@@ -9,7 +9,6 @@ export default function Search() {
     const [error, setError] = React.useState(null);
 
     async function search() {
-        console.log(query);
         const response = await fetch(`${apiURL}/items/search`,
         {
             method: "POST",
@@ -29,10 +28,12 @@ export default function Search() {
         }
     }
 
-    const debouncedFetch = useMemo(() => debounce(search, 1000), [query]);
+    const debouncedFetch = useMemo(() => debounce(search, 600), [query]);
 
     useEffect(() => {
-        debouncedFetch(query);
+        if (query.length > 0) {
+            debouncedFetch(query);
+        }
     }, [query]);
 
     return (
@@ -50,7 +51,10 @@ export default function Search() {
                 <input type={"text"} placeholder={"Search..."} value={query}
                        onChange={e => setQuery(e.target.value)}
                        style={{
-                            borderRadius: '4px',
+                            borderRadius: '6px',
+                            borderLeft: 'none',
+                            borderRight: 'none',
+                            borderTop: 'none',
                             fontSize: '4em',
                         }}/>
             </div>

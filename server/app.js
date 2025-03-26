@@ -20,6 +20,7 @@ app.use(express.json());
 
 // serve up static files (e.g. html and css files)
 app.use(express.static(path.join(__dirname, "../dist")));
+app.use(express.static('public'));
 
 // api router
 app.use("/api", require("./routes"));
@@ -33,7 +34,7 @@ app.use((req, res) => {
 });
 
 // error handling middleware
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   console.error("SERVER ERROR: ", error);
 
   if (res.statusCode < 400) {
