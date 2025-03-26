@@ -4,7 +4,9 @@ import Home from "./views/Home.jsx";
 import Item from "./views/Item.jsx";
 import Items from "./views/Items.jsx";
 import AddItem from "./views/AddItem.jsx";
-import Header from "./components/Header.jsx";
+import EditItem from "./views/EditItem";
+
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -12,9 +14,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/add" element={<AddItem />} />
         <Route path="/items/:id" element={<Item />} />
         <Route path="/items" element={<Items />} />
+        <Route path="/add" element={<AddItem />} />
+        <Route path="/edit/:id" element={<EditItem />} />
       </Routes>
     </BrowserRouter>
   );
