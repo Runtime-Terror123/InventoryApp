@@ -6,7 +6,6 @@ import Items from "./views/Items.jsx";
 import AddItem from "./views/AddItem.jsx";
 import EditItem from "./views/EditItem";
 import Header from "./components/Header";
-import { set } from "lodash";
 
 function App() {
   const [isCartShown, setIsCartShown] = useState(false);
