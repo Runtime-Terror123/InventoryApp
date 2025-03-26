@@ -109,6 +109,7 @@ export default function AddItem() {
             type={"number"}
             min="0"
             max="99999"
+            step={"0.01"}
           />
         </fieldset>
         <fieldset>
