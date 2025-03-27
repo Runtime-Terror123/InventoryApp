@@ -1,35 +1,33 @@
-import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 import apiURL from "../api";
+import { Box } from "@mui/material";
+import ItemCard from "../components/ItemCard";
 
-const Items = () => {
-  const [items, setItems]= useState([]);
+const Items = ({ cartItems, setCartItems }) => {
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch (`${apiURL}/items`)
-    .then(response => response.json())
-    .then(data => setItems(data))
-    .catch(error => console.log('Error fetching items', error));
-  },
-[])
+    fetch(`${apiURL}/items`)
+      .then((response) => response.json())
+      .then((data) => setItems(data))
+      .catch((error) => console.log("Error fetching items", error));
+  }, []);
+
   return (
-    <div className= "items-container">
-     {items.map(item => (
-        <div className="item" key={item.id}>
-        <h3>{item.name}</h3>
-        <p>{item.description}</p>
-          <img  src={item.image} alt="" height={"300px"}/>
-        <span>Price: ${item.price}</span>
-        <span>Category: {item.category}</span>
-        <NavLink to={`/items/${item.id}`}>
-        <h2>More Details</h2>
-      </NavLink>
-      </div>
-    ))}
-  </div>
-);
+    <Box className="items-page">
+
+      <Box className="items-container">
+        {items.map((item) => (
+          <ItemCard
+            item={item}
+            key={item.id}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+          />
+        ))}
+      </Box>
+    </Box>
+  );
 };
 
 export default Items;

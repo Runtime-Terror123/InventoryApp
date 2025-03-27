@@ -16,7 +16,7 @@ app.use(morgan("dev"));
 
 // parsing middleware for form input data & json
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // serve up static files (e.g. html and css files)
 app.use(express.static(path.join(__dirname, "../dist")));
@@ -25,12 +25,10 @@ app.use(express.static('public'));
 // api router
 app.use("/api", require("./routes"));
 
-// 404 handler
-app.use((req, res) => {
-  res.status(404).send({
-    error: "404 - Not Found",
-    message: "No route found for the requested URL",
-  });
+
+// Redirect 404s to react
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 // error handling middleware
