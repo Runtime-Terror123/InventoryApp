@@ -22,6 +22,8 @@ const Items = ({ cartItems, setCartItems }) => {
             key={item.id}
             cartItems={cartItems}
             setCartItems={setCartItems}
+            setSnackbarOpen={setSnackbarOpen}
+            setSnackbarMessage={setSnackbarMessage}
           />
         ))}
       </Box>

@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const ItemCard = ({ item, cartItems, setCartItems }) => {
+const ItemCard = ({ item, cartItems, setCartItems, setSnackbarMessage, setSnackbarOpen }) => {
   const navigate = useNavigate();
 
   const handleItemClick = () => {
@@ -15,6 +15,8 @@ const ItemCard = ({ item, cartItems, setCartItems }) => {
       ...cartItems,
       item
     ])
+    setSnackbarMessage("An error occurred. Please try again later.");
+    setSnackbarOpen(true);
   };
 
   return (
