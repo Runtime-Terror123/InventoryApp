@@ -38,27 +38,37 @@ export default function Search() {
 
     return (
         <div style={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "100%",
         }}>
             {error && <div style={{
                 backgroundColor: "red",
                 color: "white",
                 marginBottom: "1vh",
                 padding: "4px",
-            }}>{error.message}</div>}
-            <div>
+            }}>
+                {error.message}
+            </div>}
+            <form onSubmit={event => {
+                event.preventDefault();
+                debouncedFetch()
+            }}>
                 <input type={"text"} placeholder={"Search..."} value={query}
                        onChange={e => setQuery(e.target.value)}
                        style={{
-                            borderRadius: '6px',
+                            borderRadius: '8px',
                             borderLeft: 'none',
                             borderRight: 'none',
                             borderTop: 'none',
                             fontSize: '4em',
+                            padding: '10px',
                         }}/>
-            </div>
-            <div>
+            </form>
+            <div style={{
+                alignSelf: "flex-start",
+            }}>
                 {results.length > 0 && <h1>Results</h1>}
                 {results.map((result, index) => {
                     return <div key={index}>
