@@ -11,4 +11,4 @@ jobs:
         node-version: 22
     - run: npm ci
     - run: npm test
-    - run: eslint ./public/react
+    - run: ./node_modules/.bin/eslint eslint ./public/react
