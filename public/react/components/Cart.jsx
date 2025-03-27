@@ -65,9 +65,9 @@ const Cart = ({ setIsCartShown, cartItems, setCartItems }) => {
         <Typography>No items in your cart</Typography>
       ) : (
         <>
-          {cartItems.map((item) => (
+          {cartItems.map((item, index) => (
             <Box
-              key={item.id}
+              key={index}
               sx={{ display: "flex", justifyContent: "space-between" }}
             >
               <Box>

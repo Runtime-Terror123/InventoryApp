@@ -4,6 +4,7 @@ import { IconButton } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {Canvas} from "@react-three/fiber";
 import Logo from "./Logo";
+import { ResizeObserver } from '@juggle/resize-observer';
 
 export default function Header({ setIsCartShown }) {
   const toggleCart = () => {
@@ -26,7 +27,7 @@ export default function Header({ setIsCartShown }) {
         alignItems: "center",
       }}>
           <div id="canvas-container" style={{ display: "inline-block", height: "10vh", width: '7vw' }} >
-            <Canvas>
+            <Canvas resize={{ polyfill: ResizeObserver}}>
               <Logo/>
             </Canvas>
         </div>
