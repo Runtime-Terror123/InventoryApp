@@ -190,5 +190,11 @@ h4 {
 }
 
 nav a {
+  text-decoration: none;
   width: 10vw;
+  text-align: center;
+}
+
+a:hover {
+  color: white;
 }
