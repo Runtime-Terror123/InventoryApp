@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const ItemCard = ({ item, cartItems, setCartItems }) => {
   const navigate = useNavigate();
 
-  const handleItemClick = (id) => {
+  const handleItemClick = () => {
     navigate(`/items/${item.id}`);
   };
 

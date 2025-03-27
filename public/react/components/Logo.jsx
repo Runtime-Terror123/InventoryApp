@@ -1,3 +1,5 @@
+/* eslint react/no-unknown-property: 0 */
+
 import TreasureChest from "./TreasureChest";
 import React, {Suspense} from "react";
 import {OrbitControls, RandomizedLight} from "@react-three/drei";
