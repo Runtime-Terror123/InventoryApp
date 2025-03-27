@@ -64,8 +64,8 @@ export default function Search() {
                             borderRight: 'none',
                             borderTop: 'none',
                             borderBottomWidth: '4px',
-                            fontSize: '4em',
-                            padding: '10px',
+                            fontSize: '3em',
+                            padding: '15px',
                         }}/>
             </form>
             <div style={{
