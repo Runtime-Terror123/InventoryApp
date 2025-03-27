@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import apiURL from "../api";
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 const Orders = () => {
@@ -36,7 +36,7 @@ const Orders = () => {
     { field: "totalPrice", headerName: "Total Price", width: 150 },
   ];
 
-  if (!orders) return <div>Loading...</div>;
+  if (!orders) return <CircularProgress />;
 
   return (
     <Box className="orders-page">

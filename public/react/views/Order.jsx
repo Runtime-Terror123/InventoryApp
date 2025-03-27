@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import apiURL from "../api";
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 const Order = () => {
@@ -43,7 +43,7 @@ const Order = () => {
     quantity: item.OrderItem?.quantity || 0,
   }));
 
-  if (!order) return <div>Loading...</div>;
+  if (!order) return <CircularProgress />;
 
   return (
     <Box>
