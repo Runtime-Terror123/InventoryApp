@@ -19,11 +19,11 @@ const ItemCard = ({ item, cartItems, setCartItems }) => {
 
   return (
     <Box className="item-card" onClick={handleItemClick}>
-      <img
+      {item.image && <img
         className="item-card-image"
         alt={item.name}
-        src={item.image ? item.image : ""}
-      />
+        src={item.image}
+      />}
       <Box className="item-card-content">
         <Typography variant="h6">{item.name}</Typography>
         <Typography variant="body2">{item.description}</Typography>
