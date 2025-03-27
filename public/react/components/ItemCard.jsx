@@ -18,7 +18,7 @@ const ItemCard = ({ item, cartItems, setCartItems }) => {
   };
 
   return (
-    <Box key={item.id} className="item-card" onClick={handleItemClick}>
+    <Box className="item-card" onClick={handleItemClick}>
       <img
         className="item-card-image"
         alt={item.name}
