@@ -79,7 +79,7 @@ export default function AddItem() {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label htmlFor="name">Name</label>
-          <input name={"name"} value={formState.name} onChange={onChange} minLength="2"/>
+          <input name={"name"} value={formState.name} onChange={onChange} minLength="2" required={true}/>
         </fieldset>
         <fieldset>
         <label htmlFor="description">Description</label>
@@ -88,6 +88,7 @@ export default function AddItem() {
             value={formState.description}
             onChange={onChange}
             minLength="2"
+            required={true}
           />
         </fieldset>
         <fieldset>
@@ -97,6 +98,7 @@ export default function AddItem() {
             value={formState.category}
             onChange={onChange}
             minLength="2"
+            required={true}
           />
         </fieldset>
         <fieldset>
@@ -113,6 +115,7 @@ export default function AddItem() {
             min="0"
             max="99999"
             step={"0.01"}
+            required={true}
           />
         </fieldset>
         <fieldset>

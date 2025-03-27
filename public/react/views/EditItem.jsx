@@ -93,7 +93,7 @@ export default function EditItem() {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label htmlFor="name">Name</label>
-          <input name={"name"} value={formState.name} onChange={onChange} />
+          <input name={"name"} value={formState.name} onChange={onChange} required={true}/>
         </fieldset>
         <fieldset>
           <label htmlFor="description">Description</label>
