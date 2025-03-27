@@ -38,6 +38,10 @@ function App() {
     if (auth.error) {
         return <div>Encountering error... {auth.error.message}</div>;
     }
+
+    if(auth.isAuthenticated) {
+        console.debug(auth.user)
+    }
   return (
     <BrowserRouter>
       <Header setIsCartShown={setIsCartShown} auth={auth} signOutRedirect={signOutRedirect} isAuthenticated={auth.isAuthenticated}/>

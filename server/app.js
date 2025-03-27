@@ -25,10 +25,18 @@ app.use(express.static(path.join(__dirname, "../dist")));
 app.use("/api", require("./routes"));
 
 
-// Redirect 404s to react
-app.get('*', (req, res) => {
-  res.sendFile(path.join('dist', 'index.html'), { root: path.resolve(__dirname, '..') });
-});
+// // Redirect 404s to react
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join('dist', 'index.html'), { root: path.resolve(__dirname, '..') });
+// });
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).send({
+    error: "404 - Not Found",
+    message: "No route found for the requested URL",
+  });
+})
 
 // error handling middleware
 app.use((error, req, res) => {
