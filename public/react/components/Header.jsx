@@ -54,7 +54,13 @@ export default function Header({ setIsCartShown, auth, signOutRedirect, isAuthen
             </IconButton>
           </div>
           {isAuthenticated ?
-            <a href="#" onClick={() => auth.removeUser()}>Sign out</a>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+              }}>
+                {auth.user.profile.email}
+                <a href="#" onClick={() => auth.removeUser()}>Sign out</a>
+              </div>
               :
               <a href="#" onClick={() => auth.signinRedirect()}>Sign in</a>
           }

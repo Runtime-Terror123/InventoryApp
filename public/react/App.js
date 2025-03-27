@@ -54,6 +54,7 @@ function App() {
             setIsCartShown={setIsCartShown}
             cartItems={cartItems}
             setCartItems={setCartItems}
+            auth={auth}
           />
         </Box>
       )}

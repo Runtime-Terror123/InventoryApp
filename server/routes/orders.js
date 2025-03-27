@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Order, Item } = require("../models/index");
+const {CognitoJwtVerifier} = require("aws-jwt-verify");
 
 router.get("/", async (req, res) => {
   try {
@@ -21,6 +22,21 @@ router.post("/", async (req, res) => {
   try {
     const newOrder = await Order.create();
     const items = req.body.items;
+
+    const verifier = CognitoJwtVerifier.create({
+      userPoolId: "us-east-1_UUucYZe5a",
+      tokenUse: "id",
+      clientId: "7gqm3rvsa4noinqp0vcbrv19cq",
+    });
+
+    try {
+      const payload = await verifier.verify(
+          req.headers.authorization // the JWT as string
+      );
+      console.log(JSON.stringify(payload));
+    } catch (e) {
+      res.status(500).json({ message: "Not authorized" });
+    }
 
     // Create hash map of items and their quantities ex: {3: 2, 2: 1}
     const itemCountMap = items.reduce((acc, item) => {
@@ -51,6 +67,7 @@ router.post("/", async (req, res) => {
       totalPrice: totalPrice,
     });
 
+    // TODO: remove user model and just set payload.user_id
     const orderWithItems = await Order.findOne({
       where: { id: newOrder.id },
       include: [{ model: Item }],
