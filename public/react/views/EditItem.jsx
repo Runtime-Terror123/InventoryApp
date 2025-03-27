@@ -101,6 +101,7 @@ export default function EditItem() {
             name={"description"}
             value={formState.description}
             onChange={onChange}
+            required={true}
           />
         </fieldset>
         <fieldset>
@@ -109,6 +110,7 @@ export default function EditItem() {
             name={"category"}
             value={formState.category}
             onChange={onChange}
+            required={true}
           />
         </fieldset>
         <fieldset>
@@ -126,6 +128,7 @@ export default function EditItem() {
             min="0"
             max="99999"
             step={"0.01"}
+            required={true}
           />
         </fieldset>
         <fieldset>

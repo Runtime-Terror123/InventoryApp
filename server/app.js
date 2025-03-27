@@ -28,7 +28,7 @@ app.use("/api", require("./routes"));
 
 // Redirect 404s to react
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join('dist', 'index.html'), { root: path.resolve(__dirname, '..') });
 });
 
 // error handling middleware
