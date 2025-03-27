@@ -55,7 +55,7 @@ export default function Search() {
                 event.preventDefault();
                 debouncedFetch()
             }}>
-                <input type={"text"} placeholder={"Type here to search..."} value={query}
+                <input type={"search"} placeholder={"Type here to search..."} value={query}
                        onChange={e => setQuery(e.target.value)}
                        style={{
                            backgroundColor: "rgb(239, 239, 239, 0.3)",

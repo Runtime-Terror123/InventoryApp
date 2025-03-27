@@ -79,14 +79,15 @@ export default function AddItem() {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <label htmlFor="name">Name</label>
-          <input name={"name"} value={formState.name} onChange={onChange} />
+          <input name={"name"} value={formState.name} onChange={onChange} minLength="2"/>
         </fieldset>
         <fieldset>
-          <label htmlFor="description">Description</label>
+        <label htmlFor="description">Description</label>
           <input
             name={"description"}
             value={formState.description}
             onChange={onChange}
+            minLength="2"
           />
         </fieldset>
         <fieldset>
@@ -95,6 +96,7 @@ export default function AddItem() {
             name={"category"}
             value={formState.category}
             onChange={onChange}
+            minLength="2"
           />
         </fieldset>
         <fieldset>
