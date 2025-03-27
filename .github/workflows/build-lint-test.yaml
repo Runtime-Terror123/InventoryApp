@@ -3,10 +3,10 @@ on:
   push:
     branches:
       - main
-  on:
-    pull_request:
-      types: [opened, reopened]
-
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - main
 
 jobs:
   build-test-lint:
