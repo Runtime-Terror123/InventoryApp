@@ -74,7 +74,10 @@ const ItemCard = ({ item, cartItems, setCartItems }) => {
             color: "#555",
           }}
         >
-          <Box component="span" sx={{ color: "rgb(25, 118, 210)", fontWeight: "bold" }}>
+          <Box
+            component="span"
+            sx={{ color: "rgb(25, 118, 210)", fontWeight: "bold" }}
+          >
             Price: ${item.price}
           </Box>
           <Box component="span">Category: {item.category}</Box>
