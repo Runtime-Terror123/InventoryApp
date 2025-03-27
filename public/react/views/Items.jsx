@@ -15,7 +15,6 @@ const Items = ({ cartItems, setCartItems }) => {
 
   return (
     <Box className="items-page">
-
       <Box className="items-container">
         {items.map((item) => (
           <ItemCard

@@ -21,28 +21,42 @@ router.post("/", async (req, res) => {
   try {
     const newOrder = await Order.create();
     const items = req.body.items;
+
+    // Create hash map of items and their quantities ex: {3: 2, 2: 1}
+    const itemCountMap = items.reduce((acc, item) => {
+      acc[item.id] = (acc[item.id] || 0) + 1; // Counting each item by its ID
+      return acc;
+    }, {});
+
     let totalNumItems = 0;
     let totalPrice = 0;
-    for (const item of items) {
-      totalNumItems += 1;
-      totalPrice += item.price;
-    }
+
     const itemInstances = await Item.findAll({
-      where: { id: items.map((item) => item.id) },
+      where: { id: Object.keys(itemCountMap) },
     });
-    await newOrder.setItems(itemInstances);
+
+    // Loop through db items
+    for (const itemInstance of itemInstances) {
+      const quantity = itemCountMap[itemInstance.id];
+      totalNumItems += quantity;
+      totalPrice += itemInstance.price * quantity;
+
+      // Update join table @ quantity column
+      await newOrder.addItem(itemInstance, { through: { quantity } });
+    }
+
+    // Update Order columns
     await newOrder.update({
       numItems: totalNumItems,
       totalPrice: totalPrice,
     });
+
     const orderWithItems = await Order.findOne({
       where: { id: newOrder.id },
-      include: [
-        {
-          model: Item,
-        },
-      ],
+      include: [{ model: Item }],
     });
+
+    // Return order data w/ items to frontend
     res.status(201).json(orderWithItems);
   } catch (error) {
     res.status(500).json({ message: error.message });
