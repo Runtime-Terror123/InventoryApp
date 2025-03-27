@@ -48,6 +48,9 @@ export default function Header({ setIsCartShown }) {
         <NavLink to="/items" end>
           Items
         </NavLink>
+        <NavLink to="/orders" end>
+          Orders
+        </NavLink>
         <div>
           <IconButton onClick={toggleCart}>
             <ShoppingCartIcon />
