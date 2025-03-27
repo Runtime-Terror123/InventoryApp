@@ -1,17 +1,32 @@
 const express = require("express");
 const router = express.Router();
-const { Order, Item } = require("../models/index");
+const { Order, Item, User } = require("../models/index");
 const {CognitoJwtVerifier} = require("aws-jwt-verify");
 
 router.get("/", async (req, res) => {
   try {
     const orders = await Order.findAll({
-      include: Item,
+      include: [ Item, User ]
     });
     if (orders) {
       res.status(200).json(orders);
     } else {
       res.status(404).json({ message: "No orders found" });
+    }
+  } catch (err) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const order = await Order.findByPk(req.params.id, {
+      include: [ Item, User ]
+    });
+    if (order) {
+      res.status(200).json(order);
+    } else {
+      res.status(404).json({ message: "No order found" });
     }
   } catch (err) {
     res.status(500).json({ message: error.message });

@@ -48,7 +48,10 @@ export default function Header({ setIsCartShown, auth, signOutRedirect, isAuthen
           <NavLink to="/items" end>
             Items
           </NavLink>
-          <div>
+          <NavLink to="/orders" end>
+          Orders
+        </NavLink>
+        <div>
             <IconButton onClick={toggleCart}>
               <ShoppingCartIcon/>
             </IconButton>
