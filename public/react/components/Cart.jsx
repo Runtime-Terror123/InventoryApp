@@ -4,7 +4,7 @@ import { Box, Typography, Snackbar, Button } from "@mui/material";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Cart = ({ setIsCartShown, cartItems, setCartItems }) => {
+const Cart = ({ setIsCartShown, cartItems, setCartItems, auth }) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
@@ -24,6 +24,7 @@ const Cart = ({ setIsCartShown, cartItems, setCartItems }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": auth.user.id_token,
         },
         body: JSON.stringify({ items: cartItems }),
       });

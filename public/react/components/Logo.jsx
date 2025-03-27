@@ -20,7 +20,7 @@ export default function Logo () {
                        enableRotate={true}
                        autoRotateSpeed={10}
                        enableDamping={false}
-                       dampingFactor={0.01}
+                        smoothTime={0.01}
                        enableZoom={false}
                        enablePan={false}
                        truckSpeed={0}
