@@ -6,7 +6,7 @@ import Items from "./views/Items.jsx";
 import AddItem from "./views/AddItem.jsx";
 import EditItem from "./views/EditItem";
 import Header from "./components/Header";
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
 import Cart from "./components/Cart";
 
 function App() {
@@ -16,30 +16,24 @@ function App() {
   return (
     <BrowserRouter>
       <Header setIsCartShown={setIsCartShown} />
-        {/* Greyed-out background when cart is shown */}
-        {isCartShown && <Box className="overlay" onClick={() => setIsCartShown(false)} />}
-
-        {/* Cart displayed on the right side */}
-        {isCartShown && (
-            <Box className="cart-container">
-                <Cart
-                    setIsCartShown={setIsCartShown}
-                    cartItems={cartItems}
-                    setCartItems={setCartItems}
-                />
-            </Box>
-        )}
+      {isCartShown && (
+        <Box className="overlay" onClick={() => setIsCartShown(false)} />
+      )}
+      {isCartShown && (
+        <Box className="cart-container">
+          <Cart
+            setIsCartShown={setIsCartShown}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+          />
+        </Box>
+      )}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/items/:id" element={<Item />} />
         <Route
           path="/items"
-          element={
-            <Items
-              cartItems={cartItems}
-              setCartItems={setCartItems}
-            />
-          }
+          element={<Items cartItems={cartItems} setCartItems={setCartItems} />}
         />
         <Route path="/add" element={<AddItem />} />
         <Route path="/edit/:id" element={<EditItem />} />

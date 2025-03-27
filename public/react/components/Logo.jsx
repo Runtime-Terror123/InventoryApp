@@ -8,7 +8,7 @@ import * as THREE from "three";
 
 export default function Logo () {
     const ref = useRef(null);
-    useFrame((state, delta, frame) => {
+    useFrame((state, delta) => {
         if(ref.current) {
             ref.current.azimuthAngle += 4 * delta * THREE.MathUtils.DEG2RAD;
         }
@@ -32,7 +32,7 @@ export default function Logo () {
                        minDistance={5}
                        maxDistance={5}
                         maxSpeed={1}
-                        azimuthRotateSpeed={2}
+                        azimuthRotateSpeed={2.5}
                         ref={ref}
         />
             <Suspense>
