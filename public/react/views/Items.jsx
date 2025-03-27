@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import ItemCard from "../components/ItemCard";
 import Cart from "../components/Cart";
 
-const Items = ({ isCartShown, setIsCartShown, cartItems, setCartItems }) => {
+const Items = ({ cartItems, setCartItems }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -16,19 +16,6 @@ const Items = ({ isCartShown, setIsCartShown, cartItems, setCartItems }) => {
 
   return (
     <Box className="items-page">
-      {/* Greyed-out background when cart is shown */}
-      {isCartShown && <Box className="overlay" />}
-
-      {/* Cart displayed on the right side */}
-      {isCartShown && (
-        <Box className="cart-container">
-          <Cart
-            setIsCartShown={setIsCartShown}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-          />
-        </Box>
-      )}
 
       <Box className="items-container">
         {items.map((item) => (

@@ -15,7 +15,7 @@ function Item() {
       }
       setItem(data);
     } catch (err) {
-      console.log("Oh no an error! ", err);
+      console.error("Oh no an error! ", err);
     }
   }
 
@@ -29,10 +29,10 @@ function Item() {
         method: "DELETE",
       });
       const data = await response.json();
-      console.log(data);
+      console.debug(data);
       navigate("/items");
     } catch (err) {
-      console.log("Oh no an error! ", err);
+      console.error("Oh no an error! ", err);
     }
   }
   console.log(item);

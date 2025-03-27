@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 const ItemCard = ({ item, cartItems, setCartItems }) => {
   const navigate = useNavigate();
+
   const handleItemClick = (id) => {
     navigate(`/items/${item.id}`);
   };
+
   const handleAddToCart = (e) => {
     e.stopPropagation();
     setCartItems([
@@ -14,6 +16,7 @@ const ItemCard = ({ item, cartItems, setCartItems }) => {
       item
     ])
   };
+
   return (
     <Box key={item.id} className="item-card" onClick={handleItemClick}>
       <img

@@ -9,24 +9,28 @@ export default function Header({ setIsCartShown }) {
   const toggleCart = () => {
     setIsCartShown((prev) => !prev);
   };
-  return (
-    <header
+
+  return <header
       id={"header"}
       style={{
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
         paddingBottom: "1vh",
-        marginBottom: "1vh"
+        marginBottom: "1vh",
       }}
     >
-      <h1>Inventory App</h1>
-      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+      <nav style={{ display: "flex", gap: 10, alignItems: "center" }}>
+      <div style={{
+        display: "flex",
+        alignItems: "center",
+      }}>
           <div id="canvas-container" style={{ display: "inline-block", height: "10vh", width: '7vw' }} >
             <Canvas>
               <Logo/>
             </Canvas>
         </div>
+
         <h1 style={{ display: "inline-block" }} >Inventory App</h1>
       </div>
       <nav style={{
@@ -47,6 +51,6 @@ export default function Header({ setIsCartShown }) {
           <ShoppingCartIcon />
         </IconButton>
       </nav>
+      </nav>
     </header>
-  );
 }
