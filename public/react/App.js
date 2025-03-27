@@ -10,6 +10,14 @@ import { Box } from "@mui/material";
 import Cart from "./components/Cart";
 import { useAuth } from "react-oidc-context";
 
+let redirectURL;
+
+if (process.env.NODE_ENV === "development") {
+    redirectURL = process.env.REACT_APP_API_URL || "http://localhost:3000/api";
+} else {
+    redirectURL = "https://inventoryapp-r8aa.onrender.com"
+}
+
 function App() {
   const [isCartShown, setIsCartShown] = useState(false);
   const [cartItems, setCartItems] = useState([]);
@@ -18,8 +26,8 @@ function App() {
 
     const signOutRedirect = () => {
         const clientId = "7gqm3rvsa4noinqp0vcbrv19cq";
-        const logoutUri = "<logout uri>";
-        const cognitoDomain = "https://<user pool domain>";
+        const logoutUri = redirectURL;
+        const cognitoDomain = "https://us-east-1uuucyze5a.auth.us-east-1.amazoncognito.com";
         window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
     };
 
@@ -30,22 +38,9 @@ function App() {
     if (auth.error) {
         return <div>Encountering error... {auth.error.message}</div>;
     }
-
-    if (auth.isAuthenticated) {
-        return (
-            <div>
-                <pre> Hello: {auth.user?.profile.email} </pre>
-                <pre> ID Token: {auth.user?.id_token} </pre>
-                <pre> Access Token: {auth.user?.access_token} </pre>
-                <pre> Refresh Token: {auth.user?.refresh_token} </pre>
-
-                <button onClick={() => auth.removeUser()}>Sign out</button>
-            </div>
-        );
-    }
   return (
     <BrowserRouter>
-      <Header setIsCartShown={setIsCartShown} auth={auth} signOutRedirect={signOutRedirect} />
+      <Header setIsCartShown={setIsCartShown} auth={auth} signOutRedirect={signOutRedirect} isAuthenticated={auth.isAuthenticated}/>
       {isCartShown && (
         <Box className="overlay" onClick={() => setIsCartShown(false)} />
       )}

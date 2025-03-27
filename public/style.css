@@ -156,7 +156,6 @@ header {
   color: black;
   margin-bottom: 20px;
   font-size: 25px;
-  margin-left: 10%;
   font-family: 'Baloo Tamma', sans-serif;
   animation: slideIn 2s;
   animation-iteration-count: 1;
@@ -187,7 +186,7 @@ header {
 
 nav a {
   text-decoration:none;
-  width: 10vw;
+  width: 7vw;
   text-align: center;
 }
 
@@ -212,3 +211,6 @@ a{
   outline: #777777 solid 2px;
 }
 
+.MuiOutlinedInput-root {
+  margin-bottom: 10px;
+}

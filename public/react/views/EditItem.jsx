@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import apiURL from "../api";
 import {useParams} from "react-router-dom";
 import React from 'react'
+import {Button, TextField} from "@mui/material";
 
 export default function EditItem() {
   const { id } = useParams();
@@ -28,7 +29,13 @@ export default function EditItem() {
       if (response.ok) {
           setMessage("Item updated!");
       } else {
-        setError(data);
+        if (data.errors === undefined) {
+          setError(data);
+        } else {
+          // Server side validation errors
+          setError({message: `${data.errors[0].msg} for ${data.errors[0].path}`});
+        }
+
       }
 
     } catch (e) {
@@ -40,6 +47,7 @@ export default function EditItem() {
   }
 
   function onChange(event) {
+    console.log(event.target)
     // For the image, we have to use FileReader, set the onloadend callback function and call readAsDataURL
     if (event.target.name === "image") {
       let reader = new FileReader();
@@ -68,7 +76,11 @@ export default function EditItem() {
   }
 
   return (
-    <>
+    <div  style={{
+      backgroundColor: "white",
+      padding: "10px",
+      borderRadius: "5px",
+    }}>
       <h1>Edit Item</h1>
       {error && <div
           style={{
@@ -90,58 +102,27 @@ export default function EditItem() {
         {message}
       </div>}
 
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <label htmlFor="name">Name</label>
-          <input name={"name"} value={formState.name} onChange={onChange} required={true}/>
-        </fieldset>
-        <fieldset>
-          <label htmlFor="description">Description</label>
-          <input
-            name={"description"}
-            value={formState.description}
-            onChange={onChange}
-            required={true}
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="category">Category</label>
-          <input
-            name={"category"}
-            value={formState.category}
-            onChange={onChange}
-            required={true}
-          />
-        </fieldset>
+      <form onSubmit={handleSubmit} style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}>
+        <TextField id="outlined-basic" label="Name" name="name" variant="outlined" value={formState.name} onChange={onChange} required={true} />
+        <TextField id="outlined-basic" label="Category" name="category" variant="outlined" value={formState.category} onChange={onChange} required={true} />
         <fieldset>
           <label htmlFor="image">Image</label>
           {formState.image && <div><img src={formState.image} alt={"Current image"} height={"300px"}/></div>}
           <input type={"file"} name={"image"} onChange={onChange} accept=".png,.jpg"/>
         </fieldset>
-        <fieldset>
-          <label htmlFor="price">Price</label>
-          <input
-            name={"price"}
-            value={formState.price}
-            onChange={onChange}
-            type={"number"}
-            min="0"
-            max="99999"
-            step={"0.01"}
-            required={true}
-          />
-        </fieldset>
-        <fieldset>
-          <button
-            type={"submit"}
-            style={{
-              backgroundColor: "lightgreen",
-            }}
-          >
-            Edit
-          </button>
-        </fieldset>
+        <TextField type={"number"} id="outlined-basic" label="Price" name="price" value={formState.price} onChange={onChange} required={true}            min="0"
+                   max="99999"
+                   step={"0.01"}
+                   required={true} />
+
+        <TextField id="outlined-basic" label="Category" name="category" value={formState.category} onChange={onChange} required={true} />
+        <Button variant="contained" type={"submit"}>
+          Edit
+        </Button>
       </form>
-    </>
+    </div>
   );
 }

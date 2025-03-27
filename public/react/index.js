@@ -10,7 +10,7 @@ const root = createRoot(container);
 const cognitoAuthConfig = {
     authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_UUucYZe5a",
     client_id: "7gqm3rvsa4noinqp0vcbrv19cq",
-    redirect_uri: "https://inventoryapp-r8aa.onrender.com/",
+    redirect_uri: "http://localhost:1234/",//"https://inventoryapp-r8aa.onrender.com/",
     response_type: "code",
     scope: "phone openid email",
 };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import apiURL from "../api";
 import { useNavigate } from "react-router-dom";
 import React from 'react'
+import {Button, TextField} from "@mui/material";
 
 export default function AddItem() {
   const defaultFormState = {
@@ -35,7 +36,13 @@ export default function AddItem() {
         setFormState(defaultFormState);
         navigate("/items");
       } else {
-        setError(data);
+        if (data.errors === undefined) {
+          setError(data);
+        } else {
+          // Server side validation errors
+          setError({message: `${data.errors[0].msg} for ${data.errors[0].path}`});
+        }
+
       }
 
     } catch (e) {
@@ -61,7 +68,11 @@ export default function AddItem() {
   }
 
   return (
-    <>
+    <div style={{
+      backgroundColor: "white",
+      padding: "10px",
+      borderRadius: "5px",
+    }}>
       <h1>Add Item</h1>
       {error && (
         <div
@@ -76,59 +87,27 @@ export default function AddItem() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <label htmlFor="name">Name</label>
-          <input name={"name"} value={formState.name} onChange={onChange} minLength="2" required={true}/>
-        </fieldset>
-        <fieldset>
-        <label htmlFor="description">Description</label>
-          <input
-            name={"description"}
-            value={formState.description}
-            onChange={onChange}
-            minLength="2"
-            required={true}
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="category">Category</label>
-          <input
-            name={"category"}
-            value={formState.category}
-            onChange={onChange}
-            minLength="2"
-            required={true}
-          />
-        </fieldset>
+      <form onSubmit={handleSubmit} style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}>
+        <TextField id="outlined-basic" label="Name" name="name" variant="outlined" value={formState.name} onChange={onChange} required={true} />
+        <TextField id="outlined-basic" label="Description" name="description" variant="outlined" value={formState.description} onChange={onChange} required={true} />
         <fieldset>
           <label htmlFor="image">Image</label>
+          {formState.image && <div><img src={formState.image} alt={"Current image"} height={"300px"}/></div>}
           <input type={"file"} name={"image"} onChange={onChange} accept=".png,.jpg"/>
         </fieldset>
-        <fieldset>
-          <label htmlFor="price">Price</label>
-          <input
-            name={"price"}
-            value={formState.price}
-            onChange={onChange}
-            type={"number"}
-            min="0"
-            max="99999"
-            step={"0.01"}
-            required={true}
-          />
-        </fieldset>
-        <fieldset>
-          <button
-            type={"submit"}
-            style={{
-              backgroundColor: "lightgreen",
-            }}
-          >
-            Add
-          </button>
-        </fieldset>
+        <TextField type={"number"} id="outlined-basic" label="Price" name="price" value={formState.price} onChange={onChange} required={true}            min="0"
+                   max="99999"
+                   step={"0.01"}
+                   required={true} />
+
+        <TextField id="outlined-basic" label="Category" name="category" value={formState.category} onChange={onChange} required={true} />
+        <Button variant="contained" type={"submit"}>
+          Add
+        </Button>
       </form>
-    </>
+    </div>
   );
 }

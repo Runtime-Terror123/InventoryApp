@@ -6,7 +6,7 @@ import {Canvas} from "@react-three/fiber";
 import Logo from "./Logo";
 import { ResizeObserver } from '@juggle/resize-observer';
 
-export default function Header({ setIsCartShown, auth, signOutRedirect }) {
+export default function Header({ setIsCartShown, auth, signOutRedirect, isAuthenticated }) {
   const toggleCart = () => {
     setIsCartShown((prev) => !prev);
   };
@@ -53,9 +53,12 @@ export default function Header({ setIsCartShown, auth, signOutRedirect }) {
               <ShoppingCartIcon/>
             </IconButton>
           </div>
-          <button onClick={() => auth.signinRedirect()}>Sign in</button>
-          <button onClick={() => signOutRedirect()}>Sign out</button>
-        </nav>
+          {isAuthenticated ?
+            <a href="#" onClick={() => auth.removeUser()}>Sign out</a>
+              :
+              <a href="#" onClick={() => auth.signinRedirect()}>Sign in</a>
+          }
+          </nav>
       </nav>
   </header>
 }
