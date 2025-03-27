@@ -1,3 +1,5 @@
+/* eslint no-undef: 0 */
+
 let apiURL;
 
 if (process.env.NODE_ENV === "development") {

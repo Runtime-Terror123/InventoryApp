@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import apiURL from "../api";
 import { Box } from "@mui/material";
 import ItemCard from "../components/ItemCard";
-import Cart from "../components/Cart";
 
 const Items = ({ cartItems, setCartItems }) => {
   const [items, setItems] = useState([]);
