@@ -21,11 +21,7 @@ export default function Header({ setIsCartShown }) {
       }}
     >
       <h1>Inventory App</h1>
-      <nav style={{ display: "flex", gap: 10, alignItems: "center" }}>
-      <div style={{
-        display: "flex",
-        alignItems: "center",
-      }}>
+      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <div id="canvas-container" style={{ display: "inline-block", height: "10vh", width: '7vw' }} >
             <Canvas>
               <Logo/>
