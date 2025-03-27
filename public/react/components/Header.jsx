@@ -35,21 +35,23 @@ export default function Header({ setIsCartShown }) {
       </div>
       <nav style={{
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         alignItems: "center",
       }}>
         <NavLink to="/" end>
-          <h2>Home</h2>
+          Home
         </NavLink>
         <NavLink to="/add" end>
-          <h2>Add</h2>
+          Add
         </NavLink>
         <NavLink to="/items" end>
-          <h2>Items</h2>
+          Items
         </NavLink>
-        <IconButton onClick={toggleCart}>
-          <ShoppingCartIcon />
-        </IconButton>
+        <div>
+          <IconButton onClick={toggleCart}>
+            <ShoppingCartIcon />
+          </IconButton>
+        </div>
       </nav>
       </nav>
     </header>

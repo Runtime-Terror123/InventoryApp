@@ -1,14 +1,24 @@
 import TreasureChest from "./TreasureChest";
-import React, {Suspense} from "react";
-import {OrbitControls, RandomizedLight} from "@react-three/drei";
+import React, {Suspense, useRef} from "react";
+import {CameraControls, OrbitControls, RandomizedLight} from "@react-three/drei";
+import {useFrame} from "@react-three/fiber";
+import * as THREE from "three";
 
 export default function Logo () {
+    const ref = useRef(null);
+    useFrame((state, delta, frame) => {
+        if(ref.current) {
+            ref.current.azimuthAngle += 4 * delta * THREE.MathUtils.DEG2RAD;
+        }
+    })
     return <group>
-        <OrbitControls autoRotate={true}
+        <CameraControls autoRotate={true}
                        minPolarAngle={Math.PI/2}
                        maxPolarAngle={Math.PI/2}
-                       autoRotateSpeed={0.8}
-                       enableDamping={true}
+                       enableRotate={true}
+                       autoRotateSpeed={10}
+                       enableDamping={false}
+                       dampingFactor={0.01}
                        enableZoom={false}
                        enablePan={false}
                        truckSpeed={0}
@@ -19,6 +29,9 @@ export default function Logo () {
                        zoomSpeed={0}
                        minDistance={5}
                        maxDistance={5}
+                        maxSpeed={1}
+                        azimuthRotateSpeed={2}
+                        ref={ref}
         />
             <Suspense>
                 <TreasureChest scale={[0.04, 0.04, 0.04]} position={[0, -2, 0]}/>

@@ -188,3 +188,13 @@ h4 {
     padding: 10px;
   }
 }
+
+nav a {
+  text-decoration: none;
+  width: 10vw;
+  text-align: center;
+}
+
+a:hover {
+  color: white;
+}
