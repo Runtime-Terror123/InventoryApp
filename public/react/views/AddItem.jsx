@@ -33,7 +33,7 @@ export default function AddItem() {
 
       if (response.ok) {
         setFormState(defaultFormState);
-        navigate("/");
+        navigate("/items");
       } else {
         setError(data);
       }

@@ -34,7 +34,7 @@ const validationSchema = {
   category: { notEmpty: true },
   price: {
     isLength: {
-      options: { min: 8 },
+      options: { min: 0 },
     }
   },
 }
