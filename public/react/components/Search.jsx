@@ -51,17 +51,19 @@ export default function Search() {
             }}>
                 {error.message}
             </div>}
-            <form onSubmit={event => {
+            <form id={"search-form"} onSubmit={event => {
                 event.preventDefault();
                 debouncedFetch()
             }}>
-                <input type={"text"} placeholder={"Search..."} value={query}
+                <input type={"text"} placeholder={"Type here to search..."} value={query}
                        onChange={e => setQuery(e.target.value)}
                        style={{
+                           backgroundColor: "rgb(239, 239, 239, 0.3)",
                             borderRadius: '8px',
                             borderLeft: 'none',
                             borderRight: 'none',
                             borderTop: 'none',
+                            borderBottomWidth: '4px',
                             fontSize: '4em',
                             padding: '10px',
                         }}/>
