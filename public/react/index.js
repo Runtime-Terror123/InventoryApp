@@ -8,7 +8,9 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 let redirectURL;
 
+// eslint-disable-next-line no-undef
 if (process.env.NODE_ENV === "development") {
+    // eslint-disable-next-line no-undef
     redirectURL = process.env.REACT_APP_API_URL || "http://localhost:1234/";
 } else {
     redirectURL = "https://inventoryapp-r8aa.onrender.com"
