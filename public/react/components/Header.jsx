@@ -6,7 +6,7 @@ import {Canvas} from "@react-three/fiber";
 import Logo from "./Logo";
 import { ResizeObserver } from '@juggle/resize-observer';
 
-export default function Header({ setIsCartShown, auth, signOutRedirect, isAuthenticated }) {
+export default function Header({ setIsCartShown, auth, isAuthenticated }) {
   const toggleCart = () => {
     setIsCartShown((prev) => !prev);
   };
@@ -26,13 +26,13 @@ export default function Header({ setIsCartShown, auth, signOutRedirect, isAuthen
         display: "flex",
         alignItems: "center",
       }}>
-          <div id="canvas-container" style={{ display: "inline-block", height: "10vh", width: '7vw' }} >
+          <div id="canvas-container" style={{ display: "inline-block", height: "10vh", width: '10vw' }} >
             <Canvas resize={{ polyfill: ResizeObserver}}>
               <Logo/>
             </Canvas>
         </div>
 
-        <h1 style={{ display: "inline-block" }} >Inventory App</h1>
+        <h1 style={{ display: "inline-block" }} >Inventory</h1>
       </div>
         <nav style={{
           display: "flex",
@@ -48,9 +48,9 @@ export default function Header({ setIsCartShown, auth, signOutRedirect, isAuthen
           <NavLink to="/items" end>
             Items
           </NavLink>
-          <NavLink to="/orders" end>
+          {isAuthenticated && <NavLink to="/orders" end>
           Orders
-        </NavLink>
+        </NavLink>}
         <div>
             <IconButton onClick={toggleCart}>
               <ShoppingCartIcon/>

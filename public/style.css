@@ -228,3 +228,7 @@ a {
 .MuiOutlinedInput-root {
   margin-bottom: 10px;
 }
+
+.MuiDataGrid-row:hover {
+  cursor: pointer;
+}

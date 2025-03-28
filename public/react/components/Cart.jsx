@@ -4,9 +4,7 @@ import { Box, Typography, Snackbar, Button } from "@mui/material";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Cart = ({ setIsCartShown, cartItems, setCartItems, auth }) => {
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
+const Cart = ({ setIsCartShown, cartItems, setCartItems, snackbarOpen, snackbarMessage, setSnackbarMessage, setSnackbarOpen, auth }) => {
 
   const toggleCart = () => {
     setIsCartShown((prev) => !prev);
@@ -19,6 +17,12 @@ const Cart = ({ setIsCartShown, cartItems, setCartItems, auth }) => {
   };
 
   const handlePlaceOrder = async () => {
+    if (auth.isAuthenticated === false) {
+      setSnackbarMessage("You need to login to check out!");
+      setSnackbarOpen(true);
+      return
+    }
+
     try {
       const response = await fetch(`${apiURL}/orders`, {
         method: "POST",

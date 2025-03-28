@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import apiURL from "../api";
 import {useParams} from "react-router-dom";
 import React from 'react'
-import {Button, TextField} from "@mui/material";
+import {Box, Button, TextField} from "@mui/material";
 
 export default function EditItem() {
   const { id } = useParams();
@@ -75,12 +75,16 @@ export default function EditItem() {
     return "Loading...";
   }
 
-  return (
-    <div  style={{
-      backgroundColor: "white",
-      padding: "10px",
-      borderRadius: "5px",
-    }}>
+  return <Box
+          sx={{
+            maxWidth: "600px",
+            margin: "auto",
+            padding: "20px",
+            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+            borderRadius: "8px",
+            backgroundColor: "#f9f9f9",
+          }}
+      >
       <h1>Edit Item</h1>
       {error && <div
           style={{
@@ -113,7 +117,8 @@ export default function EditItem() {
           {formState.image && <div><img src={formState.image} alt={"Current image"} height={"300px"}/></div>}
           <input type={"file"} name={"image"} onChange={onChange} accept=".png,.jpg"/>
         </fieldset>
-        <TextField type={"number"} id="outlined-basic" label="Price" name="price" value={formState.price} onChange={onChange} required={true}            min="0"
+        <TextField type={"number"} id="outlined-basic" label="Price" name="price" value={formState.price} onChange={onChange}
+                   min="0"
                    max="99999"
                    step={"0.01"}
                    required={true} />
@@ -123,6 +128,5 @@ export default function EditItem() {
           Edit
         </Button>
       </form>
-    </div>
-  );
+    </Box>
 }

@@ -15,6 +15,10 @@ Order.init(
       allowNull: false,
       defaultValue: 0,
     },
+    cognitoUserId: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
   },
   {
     sequelize,

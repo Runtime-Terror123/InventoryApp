@@ -9,7 +9,7 @@ const root = createRoot(container);
 let redirectURL;
 
 if (process.env.NODE_ENV === "development") {
-    redirectURL = process.env.REACT_APP_API_URL || "http://localhost:3000/api";
+    redirectURL = process.env.REACT_APP_API_URL || "http://localhost:1234/";
 } else {
     redirectURL = "https://inventoryapp-r8aa.onrender.com"
 }
