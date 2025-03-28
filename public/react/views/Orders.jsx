@@ -4,12 +4,20 @@ import apiURL from "../api";
 import { Box, CircularProgress } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
-const Orders = () => {
+const Orders = ({auth}) => {
   const navigate = useNavigate();
   const [orders, setOrders] = useState(null);
   const fetchOrders = async () => {
+    if (auth.isAuthenticated === false) {
+      navigate("/")
+      return
+    }
     try {
-      const response = await fetch(`${apiURL}/orders`);
+      const response = await fetch(`${apiURL}/orders`, {
+        headers: {
+          "Authorization": auth.user.id_token,
+        }
+      });
       const data = await response.json();
       if (!response.ok) {
         return;
@@ -19,7 +27,6 @@ const Orders = () => {
       console.error("Oh no an error! ", err);
     }
   };
-  console.log(orders);
 
   useEffect(() => {
     fetchOrders();
@@ -31,7 +38,6 @@ const Orders = () => {
 
   const ordersColumns = [
     { field: "id", headerName: "ID", width: 150 },
-    { field: "User", headerName: "User", width: 150 },
     { field: "numItems", headerName: "Number of Items", width: 200 },
     { field: "totalPrice", headerName: "Total Price", width: 150 },
   ];
@@ -40,7 +46,7 @@ const Orders = () => {
 
   return (
     <Box className="orders-page">
-      This is the orders page
+      <h1>Orders</h1>
       <DataGrid
         getRowId={(row) => row.id}
         rows={orders}

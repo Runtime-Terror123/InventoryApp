@@ -8,7 +8,6 @@ const Order = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [order, setOrder] = useState(null);
-  console.log(order);
 
   const fetchOrder = async () => {
     try {

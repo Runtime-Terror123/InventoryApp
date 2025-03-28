@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import apiURL from "../api";
 import { Box, Typography, Snackbar, Button } from "@mui/material";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Cart = ({ setIsCartShown, cartItems, setCartItems }) => {
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
+const Cart = ({ setIsCartShown, cartItems, setCartItems, snackbarOpen, snackbarMessage, setSnackbarMessage, setSnackbarOpen, auth }) => {
 
   const toggleCart = () => {
     setIsCartShown((prev) => !prev);
@@ -19,11 +17,18 @@ const Cart = ({ setIsCartShown, cartItems, setCartItems }) => {
   };
 
   const handlePlaceOrder = async () => {
+    if (auth.isAuthenticated === false) {
+      setSnackbarMessage("You need to login to check out!");
+      setSnackbarOpen(true);
+      return
+    }
+
     try {
       const response = await fetch(`${apiURL}/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": auth.user.id_token,
         },
         body: JSON.stringify({ items: cartItems }),
       });

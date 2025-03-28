@@ -36,7 +36,13 @@ export default function AddItem() {
         setFormState(defaultFormState);
         navigate("/items");
       } else {
-        setError(data);
+        if (data.errors === undefined) {
+          setError(data);
+        } else {
+          // Server side validation errors
+          setError({message: `${data.errors[0].msg} for ${data.errors[0].path}`});
+        }
+
       }
     } catch (e) {
       console.error(e);
