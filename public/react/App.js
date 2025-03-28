@@ -15,25 +15,30 @@ import { useAuth } from "react-oidc-context";
 function App() {
   const [isCartShown, setIsCartShown] = useState(false);
   const [cartItems, setCartItems] = useState([]);
-const [snackbarOpen, setSnackbarOpen] = useState(false);
-const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
-    const auth = useAuth();
+  const auth = useAuth();
 
-    if (auth.isLoading) {
-        return <div>Loading...</div>;
-    }
+  if (auth.isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    if (auth.error) {
-        console.error(auth.error.message);
-    }
+  if (auth.error) {
+    console.error(auth.error.message);
+  }
 
-    if(auth.isAuthenticated) {
-        console.debug(auth.user)
-    }
+  if (auth.isAuthenticated) {
+    console.debug(auth.user);
+  }
+
   return (
     <BrowserRouter>
-      <Header setIsCartShown={setIsCartShown} auth={auth} isAuthenticated={auth.isAuthenticated}/>
+      <Header
+        setIsCartShown={setIsCartShown}
+        auth={auth}
+        isAuthenticated={auth.isAuthenticated}
+      />
       {isCartShown && (
         <Box className="overlay" onClick={() => setIsCartShown(false)} />
       )}
@@ -48,23 +53,32 @@ const [snackbarMessage, setSnackbarMessage] = useState("");
             setSnackbarOpen={setSnackbarOpen}
             snackbarMessage={snackbarMessage}
             setSnackbarMessage={setSnackbarMessage}
-
           />
         </Box>
       )}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/items/:id" element={<Item />} />
-        <Route
-          path="/items"
-          element={<Items cartItems={cartItems} setCartItems={setCartItems} setIsCartShown={setIsCartShown} setSnackbarOpen={setSnackbarOpen} setSnackbarMessage={setSnackbarMessage} />}
-        />
+      <Box sx={{ minHeight: "100vh", paddingTop: "10vh" }} >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/items/:id" element={<Item />} />
+          <Route
+            path="/items"
+            element={
+              <Items
+                cartItems={cartItems}
+                setCartItems={setCartItems}
+                setIsCartShown={setIsCartShown}
+                setSnackbarOpen={setSnackbarOpen}
+                setSnackbarMessage={setSnackbarMessage}
+              />
+            }
+          />
 
-        <Route path="/orders/:id" element={<Order />} />
-        <Route path="/orders" element={<Orders auth={auth}/>} />
-        <Route path="/add" element={<AddItem />} />
-        <Route path="/edit/:id" element={<EditItem />} />
-      </Routes>
+          <Route path="/orders/:id" element={<Order />} />
+          <Route path="/orders" element={<Orders auth={auth} />} />
+          <Route path="/add" element={<AddItem />} />
+          <Route path="/edit/:id" element={<EditItem />} />
+        </Routes>
+      </Box>
     </BrowserRouter>
   );
 }
