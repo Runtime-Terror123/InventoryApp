@@ -48,7 +48,6 @@ const Order = () => {
     <Box>
       <Box>
         <Typography variant="h4">Order #{order.id}</Typography>
-        <Typography variant="h6">From: {order.User}</Typography>
         <Typography>Total: ${order.totalPrice}</Typography>
       </Box>
       <Box>
