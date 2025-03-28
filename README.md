@@ -8,7 +8,7 @@
 We are a team of developers for an e-commerce company. The Engineering team is rebuilding their inventory tracking app from the ground up. Your team has been tasked with creating a Full-Sack (front and back end) RESTful CRUD application to track the items.
 
 ## WireFrame 
-
+https://github.com/Runtime-Terror123/InventoryApp/blob/main/wireframe.png?raw=true
 
 ### Getting Started
 Prerequistes:
