@@ -25,7 +25,7 @@ const cognitoAuthConfig = {
 root.render(
   <StrictMode>
       <AuthProvider {...cognitoAuthConfig}>
-    <App />
+          <App />
       </AuthProvider>
   </StrictMode>
 );

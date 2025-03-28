@@ -25,7 +25,7 @@ const [snackbarMessage, setSnackbarMessage] = useState("");
     }
 
     if (auth.error) {
-        console.log(auth.error.message);
+        console.error(auth.error.message);
     }
 
     if(auth.isAuthenticated) {

@@ -27,7 +27,6 @@ const Orders = ({auth}) => {
       console.error("Oh no an error! ", err);
     }
   };
-  console.log(orders);
 
   useEffect(() => {
     fetchOrders();

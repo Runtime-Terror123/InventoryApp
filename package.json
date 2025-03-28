@@ -7,7 +7,7 @@
     "client-dev": "parcel public/index.html --open",
     "server-dev": "nodemon server.js",
     "seed": "node server/seed.js",
-    "start": "parcel build public/index.html && npm run seed && node server.js"
+    "start": "parcel build public/index.html && node server.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "@parcel/babel-preset-env": "^2.14.2",
     "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.0",
+    "@sequelize/postgres": "^7.0.0-alpha.46",
     "aws-jwt-verify": "^5.0.0",
     "babel-jest": "^29.7.0",
     "cors": "^2.8.5",

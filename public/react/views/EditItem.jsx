@@ -47,7 +47,6 @@ export default function EditItem() {
   }
 
   function onChange(event) {
-    console.log(event.target)
     // For the image, we have to use FileReader, set the onloadend callback function and call readAsDataURL
     if (event.target.name === "image") {
       let reader = new FileReader();
