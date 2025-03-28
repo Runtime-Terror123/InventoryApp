@@ -43,7 +43,9 @@ function App() {
         <Box className="overlay" onClick={() => setIsCartShown(false)} />
       )}
       {isCartShown && (
-        <Box className="cart-container">
+        <Box className="cart-container" style={{
+          zIndex: 99999
+        }}>
           <Cart
             setIsCartShown={setIsCartShown}
             cartItems={cartItems}

@@ -55,13 +55,16 @@ export default function Header({ setIsCartShown, auth, isAuthenticated }) {
           <NavLink to="/" end>
             Home
           </NavLink>
-          <NavLink to="/add" end>
-            Add
-          </NavLink>
           <NavLink to="/items" end>
             Items
           </NavLink>
           {isAuthenticated && (
+            <NavLink to="/add" end>
+            Add
+            </NavLink>
+          )}
+          {isAuthenticated && (
+            
             <NavLink to="/orders" end>
               Orders
             </NavLink>
