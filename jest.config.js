@@ -1,5 +1,6 @@
 const config = {
-    testEnvironment: 'jsdom'
+    testEnvironment: 'jsdom',
+    moduleNameMapper:{"^uuid$": "uuid"}
 }
 
 export default config
