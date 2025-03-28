@@ -3,7 +3,7 @@ import apiURL from "../api";
 import { Box } from "@mui/material";
 import ItemCard from "../components/ItemCard";
 
-const Items = ({ cartItems, setCartItems }) => {
+const Items = ({ cartItems, setCartItems, setIsCartShown, setSnackbarOpen, setSnackbarMessage }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -14,18 +14,23 @@ const Items = ({ cartItems, setCartItems }) => {
   }, []);
 
   return (
-    <Box className="items-page">
-      <Box className="items-container">
-        {items.map((item) => (
-          <ItemCard
-            item={item}
-            key={item.id}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-          />
-        ))}
+      <Box className="items-page">
+          <h1>Items</h1>
+          <Box className="items-container">
+              {items.map((item) => (
+                  <ItemCard
+                      item={item}
+                      key={item.id}
+                      cartItems={cartItems}
+                      setCartItems={setCartItems}
+                      setIsCartShown={setIsCartShown}
+                      setSnackbarOpen={setSnackbarOpen}
+                      setSnackbarMessage={setSnackbarMessage}
+
+                  />
+              ))}
+          </Box>
       </Box>
-    </Box>
   );
 };
 

@@ -20,16 +20,15 @@ app.use(express.json({ limit: '10mb' }));
 
 // serve up static files (e.g. html and css files)
 app.use(express.static(path.join(__dirname, "../dist")));
-app.use(express.static('public'));
 
 // api router
 app.use("/api", require("./routes"));
 
-
 // Redirect 404s to react
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile('index.html', { root: path.resolve(__dirname, '../dist') });
 });
+
 
 // error handling middleware
 app.use((error, req, res) => {
