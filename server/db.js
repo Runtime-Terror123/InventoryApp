@@ -10,14 +10,11 @@ if (process.env.NODE_ENV !== "production") {
     storage: path.join(__dirname, "db.sqlite"),
   });
 } else {
-  const password = process.env.DB_PASSWORD;
-  sequelize = new Sequelize(
-    `postgresql://inventoryappdatabase_nvc5_user:${password}@dpg-cvi8l22dbo4c73d916j0-a.oregon-postgres.render.com/inventoryappdatabase_nvc5?ssl=true`,
-    {
-      dialect: "postgres",
-      logging: false,
-    }
-  );
+  const POSTGRES_URI = process.env.POSTGRES_URI;
+  sequelize = new Sequelize(POSTGRES_URI, {
+    dialect: "postgres",
+    logging: false,
+  });
 }
 
 module.exports = sequelize;
