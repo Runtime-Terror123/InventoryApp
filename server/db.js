@@ -14,6 +14,12 @@ if (process.env.NODE_ENV !== "production") {
   sequelize = new Sequelize(POSTGRES_URI, {
     dialect: "postgres",
     logging: false,
+      dialectOptions: {
+        ssl: {
+          require: true, // This is often required by hosting providers like Heroku or Render
+          rejectUnauthorized: false // This bypasses the certificate check
+        }
+    }
   });
 }
 
